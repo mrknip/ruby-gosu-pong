@@ -11,9 +11,8 @@ class Paddle
     @vy = 0.0
 
     @window = window
-    #position
-    #vertices
-    # Shape
+
+    @move_speed = 5
   end
 
   def verts
@@ -25,9 +24,11 @@ class Paddle
   end
 
   def move_up
+    @py -= @move_speed
   end
 
   def move_down
+    @py += @move_speed
   end
 
 

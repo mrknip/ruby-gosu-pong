@@ -11,6 +11,15 @@ class GameWindow < Gosu::Window
     self.caption = "Pong"
   end
 
+  def update
+    if button_down? Gosu::KbUp
+      @paddle.move_up
+    end
+    if button_down? Gosu::KbDown
+      @paddle.move_down
+    end
+  end
+
   def draw
     @paddle.draw
   end
