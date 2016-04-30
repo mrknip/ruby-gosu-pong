@@ -1,7 +1,7 @@
 class Ball
   def initialize(window)
-    @px = 400
-    @py = 150
+    @px = 320
+    @py = 240
 
     @height = 10
     @width = 10
@@ -12,6 +12,8 @@ class Ball
     @move_speed = 3
     @vx = (0 - @move_speed)
     @vy = @move_speed
+
+    @vx *= -1 if ((rand(9)) > 4)
   end
 
   def move
@@ -40,6 +42,13 @@ class Ball
       end
     end
   end
+
+  def goal?
+    return :player2 if @px < 30 
+    return :player1 if @px + @width > 610
+    false
+  end
+
 
   def bounce_wall
     @vy *= -1 if (@py + @height) >= 430 || @py <= 50
