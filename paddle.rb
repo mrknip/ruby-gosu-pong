@@ -31,9 +31,7 @@ class Paddle
     @py += @move_speed
   end
 
-
   def draw
     Gosu::draw_rect(@px, @py, @width, @height, Gosu::Color::WHITE)
-    #draw rect in the position
   end
 end
