@@ -13,7 +13,7 @@ class Ball
     @vx = (0 - @move_speed)
     @vy = @move_speed
 
-    @vx *= -1 if ((rand(9)) > 4)
+    @vx *= -1 if ((rand(9)) >= 4)
   end
 
   def move
