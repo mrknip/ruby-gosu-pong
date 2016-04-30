@@ -4,6 +4,8 @@ require_relative 'paddle'
 require_relative 'ball'
 
 class GameWindow < Gosu::Window
+  attr_reader :paddle
+  
   def initialize
     super 640, 480, false
 
@@ -22,7 +24,6 @@ class GameWindow < Gosu::Window
     end
 
     @ball.move
-
   end
 
   def draw

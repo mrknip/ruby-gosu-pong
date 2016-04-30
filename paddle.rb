@@ -1,5 +1,7 @@
 
 class Paddle
+  attr_reader :verts, :px, :py, :width, :height
+
   def initialize(window)
     @px = 50
     @py = 100
