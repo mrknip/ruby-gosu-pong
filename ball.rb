@@ -9,7 +9,7 @@ class Ball
 
     @window = window
 
-    @move_speed = 5
+    @move_speed = 3
     @vx = (0 - @move_speed)
     @vy = @move_speed
   end
@@ -26,18 +26,22 @@ class Ball
   end
 
   def bounce_paddle
-    paddle = @window.paddle
+    paddles = @window.paddles
 
-    if @px <= (paddle.px + paddle.width) # && (@py <= paddle.py && ((@py + @height) >= (paddle.py + paddle.height)))
-      @vx *= -1
+    paddles.each do |paddle|
+      if  ((@px <= (paddle.px + paddle.width)) && ((@px + @width) >= paddle.px)) &&
+          ((@py >= paddle.py) && ((@py + @height) <= (paddle.py + paddle.height)))
+        # an attempted bugfix for collisions at end of panel.  Only works if paddle stationary.
+        # if paddle.py - @py <= 5 || (paddle.py + paddle.height) - (@py + @height) >= 5
+          @vx *= -1 
+        # else
+        #   @vy *= -1
+        # end
+      end
     end
   end
 
   def bounce_wall
-    if (@py + @height) >= 430 || @py <= 50
-      @vy *= -1
-    elsif @px + @width >= 610 || @px <= 50
-      @vx *= -1
-    end
+    @vy *= -1 if (@py + @height) >= 430 || @py <= 50
   end
 end

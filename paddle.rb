@@ -2,11 +2,11 @@
 class Paddle
   attr_reader :verts, :px, :py, :width, :height
 
-  def initialize(window)
-    @px = 50
-    @py = 100
+  def initialize(window, x, y)
+    @px = x
+    @py = y
 
-    @height = 200
+    @height = 100
     @width = 25
 
     @vx = 0.0
@@ -26,11 +26,11 @@ class Paddle
   end
 
   def move_up
-    @py -= @move_speed
+    @py -= @move_speed unless @py == 50 
   end
 
   def move_down
-    @py += @move_speed
+    @py += @move_speed unless @py + @height == 430
   end
 
   def draw
